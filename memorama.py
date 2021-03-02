@@ -1,15 +1,15 @@
 from tkinter import *
 from tkinter import messagebox
 import random
-
+import os
 
 class Carta:
     def __init__(self):
         self.valor = 0
         self.posicion = 0
         self.oculto = True
-        self.foto = PhotoImage(file="fondo.png")
-
+        ##self.foto = PhotoImage(file="./images/fondo.gif")
+        self.foto = PhotoImage(file=resource_path("./images/fondo.gif"))
 
 class Memorama:
 
@@ -23,7 +23,7 @@ class Memorama:
         self.a = 0
         self.par = 0
         self.listo = True
-        self.fondo = PhotoImage(file="fondo.png")
+        self.fondo = PhotoImage(file=resource_path("./images/fondo.gif"))
         self.crearTablero()
         self.revolver()
         self.ventana.mainloop()
@@ -46,10 +46,12 @@ class Memorama:
         while(i <= 6):
             carta1 = Carta()
             carta1.valor = i
-            carta1.foto = PhotoImage(file=str(i)+".gif")
+            ##carta1.foto = PhotoImage(file="./images/" + str(i)+".gif")
+            carta1.foto = PhotoImage(file=resource_path("./images/" + str(i) + ".gif"))
             carta2 = Carta()
             carta2.valor = i
-            carta2.foto = PhotoImage(file=str(i)+".gif")
+            ##carta2.foto = PhotoImage(file="./images/" + str(i)+".gif")
+            carta2.foto = PhotoImage(file=resource_path("./images/" + str(i) + ".gif"))
             self.cartas.append(carta1)
             self.cartas.append(carta2)
             i += 1
@@ -92,5 +94,13 @@ class Memorama:
         self.botones[self.temporal.posicion].config(image=self.fondo)
         self.botones[self.a].config(image=self.fondo)
         self.listo = True
+
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 obj = Memorama()
