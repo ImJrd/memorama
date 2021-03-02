@@ -34,8 +34,7 @@ class Memorama:
         while i < 4:
             j = 0
             while j < 3:
-                btn = Button(self.ventana, command=lambda a=contador: self.revisar(
-                    a), height=70, width=70, image=self.fondo)
+                btn = Button(self.ventana, command=lambda a=contador: self.revisar(a), height=70, width=70, image=self.fondo)
                 btn.place(x=(j+1)*70, y=(i+1)*70)
                 self.botones.append(btn)
                 j += 1
@@ -79,6 +78,10 @@ class Memorama:
                             break
                     if bandera == True:
                         messagebox.showinfo("Win!", "Ganaste!")
+                        self.crearTablero()
+                        self.revolver()
+                        self.ventana.mainloop()
+                        obj = Memorama()
                 else:
                     self.a = a
                     self.listo = False
@@ -89,6 +92,5 @@ class Memorama:
         self.botones[self.temporal.posicion].config(image=self.fondo)
         self.botones[self.a].config(image=self.fondo)
         self.listo = True
-
 
 obj = Memorama()
