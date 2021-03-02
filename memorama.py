@@ -8,7 +8,7 @@ class Carta:
         self.valor = 0
         self.posicion = 0
         self.oculto = True
-        self.foto = PhotoImage(file="fondo.png")
+        self.foto = PhotoImage(file="images/fondo.png")
 
 
 class Memorama:
@@ -23,7 +23,7 @@ class Memorama:
         self.a = 0
         self.par = 0
         self.listo = True
-        self.fondo = PhotoImage(file="fondo.png")
+        self.fondo = PhotoImage(file="images/fondo.png")
         self.crearTablero()
         self.revolver()
         self.ventana.mainloop()
@@ -47,10 +47,10 @@ class Memorama:
         while(i <= 6):
             carta1 = Carta()
             carta1.valor = i
-            carta1.foto = PhotoImage(file=str(i)+".gif")
+            carta1.foto = PhotoImage(file="images/" + str(i)+".gif")
             carta2 = Carta()
             carta2.valor = i
-            carta2.foto = PhotoImage(file=str(i)+".gif")
+            carta2.foto = PhotoImage(file="images/" + str(i)+".gif")
             self.cartas.append(carta1)
             self.cartas.append(carta2)
             i += 1
@@ -78,7 +78,7 @@ class Memorama:
                             bandera = False
                             break
                     if bandera == True:
-                        messagebox.showinfo("Win")
+                        messagebox.showinfo("Win!", "Ganaste!")
                 else:
                     self.a = a
                     self.listo = False
